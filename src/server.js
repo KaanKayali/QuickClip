@@ -1,3 +1,11 @@
+/**
+ * QuickClip v1.0.0
+ * Developed by Kaan Kayali (@KaanKayali)
+ *
+ * @license MIT
+ * @repository https://github.com/KaanKayali/QuickClip
+ */
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');

@@ -1,3 +1,11 @@
+/**
+ * QuickClip v1.0.0
+ * Developed by Kaan Kayali (@KaanKayali)
+ *
+ * @license MIT
+ * @repository https://github.com/KaanKayali/QuickClip
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
   const themeToggle = document.getElementById('themeToggle');
@@ -24,9 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDownloading = false;
   let activeEventSource = null;
 
-  // -------------------------------------------------------------
   // Theme Management (Light / Dark Mode with localStorage)
-  // -------------------------------------------------------------
   function initTheme() {
     const savedTheme = localStorage.getItem('quickclip_theme');
     const initialTheme = savedTheme || 'dark';
@@ -53,9 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initTheme();
 
-  // -------------------------------------------------------------
   // Status Indicator Helpers
-  // -------------------------------------------------------------
   function showStatus(message, isIndeterminate = false, isError = false) {
     statusContainer.classList.remove('hidden');
     statusMessage.textContent = message;
@@ -89,9 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     statusPercent.textContent = '0%';
   }
 
-  // -------------------------------------------------------------
   // Dynamic Quality Dropdown Population
-  // -------------------------------------------------------------
   function updateQualityOptions(format) {
     qualitySelect.innerHTML = '';
 
@@ -120,9 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // -------------------------------------------------------------
   // Analyze / Fetch Video Info
-  // -------------------------------------------------------------
   async function fetchVideoInfo() {
     const url = videoUrlInput.value.trim();
 
@@ -196,9 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
-  // -------------------------------------------------------------
   // Real-Time SSE Download Handler
-  // -------------------------------------------------------------
   downloadBtn.addEventListener('click', () => {
     const url = videoUrlInput.value.trim();
     if (!url) {
@@ -241,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (data.ready && data.fileId) {
-          // Reached 100%! Trigger immediate file download
+          // Reached 100%! Trigger file download
           updateProgress(100);
           statusMessage.textContent = 'Your download has started...';
 

@@ -1,3 +1,11 @@
+/**
+ * QuickClip v1.0.0
+ * Developed by Kaan Kayali (@KaanKayali)
+ *
+ * @license MIT
+ * @repository https://github.com/KaanKayali/QuickClip
+ */
+
 const path = require('path');
 const fs = require('fs');
 const YTDlpWrap = require('yt-dlp-wrap').default || require('yt-dlp-wrap');

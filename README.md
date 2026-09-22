@@ -1,24 +1,25 @@
+
 # QuickClip
 
-QuickClip is a small full-stack web application for downloading YouTube videos as MP4 or extracting audio as MP3. It uses Express for the server and `yt-dlp` plus FFmpeg for media processing.
+QuickClip is a webapp for downloading YouTube videos as MP4 or MP3. It uses Express for the server and `yt-dlp` plus FFmpeg for media processing.
 
-> Use QuickClip only for content you own or have permission to download. You are responsible for following YouTube's Terms of Service, copyright law, and any other applicable rules.
+> This webapp is for personal use only
+
+<img alt="alt_text" width="160px" src="public/assets/favicon.png" />
+
 
 ## Features
 
-- Responsive browser UI with persistent light and dark themes.
-- YouTube metadata preview before downloading.
 - MP4 video downloads with selectable quality up to 1080p when available.
 - MP3 audio extraction with selectable bitrate.
 - Server-sent progress updates during downloads.
-- Strict YouTube URL validation, request rate limiting, a three-hour duration limit, and a 2 GB file-size limit.
+- Strict YouTube URL validation, with a three-hour duration limit, and a 2 GB file-size limit.
 - Automatic local setup of the `yt-dlp`, FFmpeg, and FFprobe binaries.
 
 ## Requirements
 
 - Node.js 20 or newer
 - npm
-- Internet access for video metadata, downloads, and the first `yt-dlp` setup
 
 ## Getting Started
 
@@ -66,7 +67,7 @@ Direct-download fallback using the same `url`, `format`, and `quality` query par
 
 ```text
 public/       Browser application
-src/          Express server and media-processing code
+src/          Express server and media-processing
 bin/          Generated yt-dlp/FFmpeg binaries (ignored by Git)
 downloads/    Temporary media files (ignored by Git)
 ```
