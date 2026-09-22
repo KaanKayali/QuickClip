@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickClip</title>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('quickclip_theme');
+      if (saved === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="title-container">
+        <img src="assets/logo.png" alt="QuickClip Logo" class="header-logo" />
+        <h1 class="main-title">
+          QuickClip
+          <span style="color: gray; font-size: 0.8em; margin-left: 10px;">by @KaanKayali</span>
+        </h1>
+        <span class="version-badge">v1.0.0</span>
+      </div>
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Light / Dark Mode">
+        <span id="themeIcon" class="theme-icon">☀️</span>
+      </button>
+    </header>
+
+    <!-- Main Content Card -->
+    <main class="main-card">
+      <!-- Input Section -->
+      <section class="input-section">
+        <label for="videoUrl" class="input-label">Enter Video URL</label>
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="videoUrl" 
+            placeholder="Paste YouTube Link here..." 
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="fetchBtn" class="btn btn-primary">
+            <span class="btn-text">Analyze</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Security & Information Box -->
+      <section class="security-info-box">
+        <div class="security-header">
+          <span class="security-icon">🛡️</span>
+          <span class="security-title">100% Safe & YouTube Exclusive</span>
+        </div>
+        <p class="security-description">
+          QuickClip is designed strictly for YouTube links. Features built-in safety controls, rate limiting, strict URL sanitization, and a <strong>3-hour maximum video length limit</strong> to keep your conversions fast and secure.
+        </p>
+      </section>
+
+      <!-- Status & Progress Container -->
+      <div id="statusContainer" class="status-container hidden">
+        <div class="spinner"></div>
+        <div class="status-text-wrapper">
+          <div class="status-header">
+            <p id="statusMessage" class="status-message">Fetching video...</p>
+            <span id="statusPercent" class="status-percent">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Preview & Download Options Card (Hidden until analyzed) -->
+      <section id="previewSection" class="preview-section hidden">
+        <div class="video-preview-card">
+          <div class="thumbnail-wrapper">
+            <img id="videoThumb" src="" alt="Video Thumbnail" loading="lazy" />
+            <span id="videoDuration" class="duration-tag">0:00</span>
+          </div>
+          <div class="video-details">
+            <h2 id="videoTitle" class="video-title">Video Title</h2>
+            <p id="videoAuthor" class="video-author">Channel Name</p>
+            <p id="videoViews" class="video-meta">Views: -</p>
+          </div>
+        </div>
+
+        <div class="options-container">
+          <!-- Format Selection -->
+          <div class="form-group">
+            <label class="section-label">Select Format</label>
+            <div class="format-toggle-group">
+              <label class="format-option">
+                <input type="radio" name="downloadFormat" value="mp4" checked />
+                <span class="format-card">
+                  <span class="format-icon">🎬</span>
+                  <span class="format-name">MP4 (Video)</span>
+                </span>
+              </label>
+              <label class="format-option">
+                <input type="radio" name="downloadFormat" value="mp3" />
+                <span class="format-card">
+                  <span class="format-icon">🎵</span>
+                  <span class="format-name">MP3 (Audio)</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Quality Selection -->
+          <div class="form-group">
+            <label for="qualitySelect" class="section-label">Select Quality</label>
+            <div class="select-wrapper">
+              <select id="qualitySelect" class="quality-select">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Download Button -->
+          <button id="downloadBtn" class="btn btn-download">
+            <span class="btn-download-text">Download file</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">high-quality audio and video converter powered by yt-dlp and ffmpeg.</p>
+      <p class="footer-date">Last updated: September 2026</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
